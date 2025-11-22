@@ -39,6 +39,14 @@ const BookingSection = () => {
     { id: "penteado-evento", name: "Penteado para Evento", duration: 90 },
   ];
 
+  const handleServiceChange = (value: string) => {
+    console.log("Serviço selecionado:", value);
+    setSelectedService(value);
+    setSelectedDate(undefined);
+    setSelectedTime("");
+    setAvailableSlots([]);
+  };
+
   const fetchAvailableSlots = async (date: Date, serviceId: string) => {
     if (!webhookUrl) {
       toast.error("Por favor, configure o webhook URL do n8n primeiro");
@@ -190,11 +198,11 @@ const BookingSection = () => {
             <Label htmlFor="service" className="text-lg font-semibold mb-3 block">
               1. Escolha seu Serviço
             </Label>
-            <Select value={selectedService} onValueChange={setSelectedService}>
+            <Select value={selectedService} onValueChange={handleServiceChange}>
               <SelectTrigger id="service" className="h-14 text-base">
                 <SelectValue placeholder="Selecione um serviço" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="z-[100] bg-card">
                 {services.map((service) => (
                   <SelectItem key={service.id} value={service.id}>
                     {service.name} ({service.duration} min)
