@@ -71,6 +71,7 @@ export default {
       fontFamily: {
         display: ['Playfair Display', 'serif'],
         body: ['Montserrat', 'sans-serif'],
+        signature: ['Great Vibes', 'cursive'],
       },
       keyframes: {
         "accordion-down": {
