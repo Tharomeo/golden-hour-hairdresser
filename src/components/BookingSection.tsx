@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Scissors, Sparkles, Heart, Crown, Calendar as CalendarIcon, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, Scissors, Sparkles, Heart, Crown, Calendar as CalendarIcon, Clock, ChevronLeft, ChevronRight, Wand2, Phone, Mail, MapPin, X } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
@@ -33,6 +33,7 @@ const BookingSection = () => {
   const [clientName, setClientName] = useState("");
   const [clientEmail, setClientEmail] = useState("");
   const [clientPhone, setClientPhone] = useState("");
+  const [showCustomizeCard, setShowCustomizeCard] = useState(false);
 
   const services: Service[] = [
     {
@@ -270,7 +271,128 @@ const BookingSection = () => {
                           </motion.button>
                         );
                       })}
+                      
+                      {/* Customize Option */}
+                      <motion.button
+                        onClick={() => setShowCustomizeCard(true)}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="relative p-6 rounded-2xl border-2 border-dashed border-gold/50 hover:border-gold hover:bg-gold/5 transition-all text-left"
+                      >
+                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-gold/10">
+                          <Wand2 className="w-6 h-6 text-gold" />
+                        </div>
+                        
+                        <h4 className="font-semibold text-lg mb-2">Personalizar</h4>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          Precisa de algo especial? Entre em contato
+                        </p>
+                        
+                        <div className="text-gold text-sm font-medium">
+                          Ver informações →
+                        </div>
+                      </motion.button>
                     </div>
+
+                    {/* Customize Contact Card Modal */}
+                    <AnimatePresence>
+                      {showCustomizeCard && (
+                        <>
+                          {/* Backdrop */}
+                          <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setShowCustomizeCard(false)}
+                            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+                          />
+                          
+                          {/* Modal Card */}
+                          <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            transition={{ type: "spring", duration: 0.5 }}
+                            className="fixed inset-4 md:inset-auto md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:w-full md:max-w-lg bg-card rounded-3xl shadow-luxury border-2 border-gold/30 z-50 overflow-hidden"
+                          >
+                            {/* Close Button */}
+                            <button
+                              onClick={() => setShowCustomizeCard(false)}
+                              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 hover:bg-background flex items-center justify-center transition-colors z-10"
+                            >
+                              <X className="w-5 h-5" />
+                            </button>
+
+                            {/* Header with gradient */}
+                            <div className="bg-gradient-to-br from-gold via-gold-light to-gold-dark p-8 text-foreground">
+                              <div className="flex items-center gap-3 mb-4">
+                                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                  <Wand2 className="w-7 h-7" />
+                                </div>
+                                <div>
+                                  <h3 className="text-2xl font-display font-bold">Personalizar Serviço</h3>
+                                  <p className="text-sm opacity-90">Estamos aqui para você!</p>
+                                </div>
+                              </div>
+                              
+                              <p className="text-base leading-relaxed">
+                                Bem-vindo! Queremos criar uma experiência única para você. Entre em contato conosco para personalizar seu atendimento.
+                              </p>
+                            </div>
+
+                            {/* Contact Information */}
+                            <div className="p-8 space-y-6">
+                              <div className="flex items-start gap-4 group">
+                                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                                  <Phone className="w-6 h-6 text-gold" />
+                                </div>
+                                <div className="flex-1">
+                                  <h4 className="font-semibold mb-1">Telefone</h4>
+                                  <a href="tel:+5511999999999" className="text-muted-foreground hover:text-gold transition-colors">
+                                    (11) 99999-9999
+                                  </a>
+                                </div>
+                              </div>
+
+                              <div className="flex items-start gap-4 group">
+                                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                                  <Mail className="w-6 h-6 text-gold" />
+                                </div>
+                                <div className="flex-1">
+                                  <h4 className="font-semibold mb-1">E-mail</h4>
+                                  <a href="mailto:contato@salao.com" className="text-muted-foreground hover:text-gold transition-colors">
+                                    contato@salao.com
+                                  </a>
+                                </div>
+                              </div>
+
+                              <div className="flex items-start gap-4 group">
+                                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                                  <MapPin className="w-6 h-6 text-gold" />
+                                </div>
+                                <div className="flex-1">
+                                  <h4 className="font-semibold mb-1">Endereço</h4>
+                                  <p className="text-muted-foreground">
+                                    Rua das Flores, 123<br />
+                                    Jardins - São Paulo, SP<br />
+                                    CEP: 01234-567
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="pt-4">
+                                <Button
+                                  onClick={() => setShowCustomizeCard(false)}
+                                  className="w-full h-12 bg-gold hover:bg-gold-dark text-foreground font-semibold"
+                                >
+                                  Entendi, obrigado!
+                                </Button>
+                              </div>
+                            </div>
+                          </motion.div>
+                        </>
+                      )}
+                    </AnimatePresence>
                   </div>
                 )}
 
