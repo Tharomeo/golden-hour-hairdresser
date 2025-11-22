@@ -158,7 +158,7 @@ All colors MUST be HSL.
   }
   
   .text-gold-gradient {
-    background: linear-gradient(180deg, #F9E79F 0%, #FFF8DC 30%, #F4E4A6 60%, #E6D690 100%);
+    background: linear-gradient(180deg, #C9A961 0%, #D4AF37 30%, #B8860B 60%, #8B6914 100%);
     background-size: 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
