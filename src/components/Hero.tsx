@@ -70,6 +70,15 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{ overflow: "visible" }}
         >
+          <motion.h1 
+            className="font-signature text-8xl md:text-9xl mb-10 text-gold-gradient"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Golden Hour
+          </motion.h1>
+          
           <motion.p
             className="text-xl md:text-2xl lg:text-3xl mb-8 text-white font-light tracking-wide text-shadow-strong"
             initial={{ opacity: 0, y: 20 }}
