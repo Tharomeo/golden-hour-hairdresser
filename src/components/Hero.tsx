@@ -71,7 +71,8 @@ const Hero = () => {
           style={{ overflow: "visible" }}
         >
           <motion.h1 
-            className="font-signature text-8xl md:text-9xl mb-10 text-gold-gradient"
+            className="font-signature text-8xl md:text-9xl mb-10 text-gold-gradient px-4 py-4"
+            style={{ overflow: "visible" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
