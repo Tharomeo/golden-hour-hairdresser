@@ -108,17 +108,67 @@ const BookingSection = () => {
     }
   };
 
-  const handleConfirmBooking = () => {
-    toast.success("Agendamento confirmado! Você receberá um email de confirmação.");
+  const handleConfirmBooking = async () => {
+    if (!selectedService || !selectedDate || !selectedTime) return;
     
-    // Reset form
-    setCurrentStep(1);
-    setSelectedService(null);
-    setSelectedDate(undefined);
-    setSelectedTime("");
-    setClientName("");
-    setClientEmail("");
-    setClientPhone("");
+    try {
+      // Send email confirmation
+      const { supabase } = await import("@/integrations/supabase/client");
+      
+      const formattedDate = format(selectedDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
+      
+      const { error: emailError } = await supabase.functions.invoke('send-booking-confirmation', {
+        body: {
+          clientName,
+          clientEmail,
+          clientPhone,
+          serviceName: selectedService.name,
+          servicePrice: selectedService.price,
+          date: formattedDate,
+          time: selectedTime,
+        }
+      });
+
+      if (emailError) {
+        console.error("Error sending email:", emailError);
+        toast.error("Não foi possível enviar o email de confirmação. Entre em contato conosco.");
+      }
+
+      // Send WhatsApp message
+      const whatsappMessage = encodeURIComponent(
+        `✨ *Confirmação de Agendamento* ✨\n\n` +
+        `Olá ${clientName}!\n\n` +
+        `Seu agendamento foi confirmado:\n\n` +
+        `📋 *Serviço:* ${selectedService.name}\n` +
+        `📅 *Data:* ${formattedDate}\n` +
+        `🕐 *Horário:* ${selectedTime}\n` +
+        `💰 *Valor:* ${selectedService.price}\n\n` +
+        `📍 *Endereço:*\n` +
+        `Rua das Flores, 123 - Jardins, São Paulo\n\n` +
+        `Por favor, chegue com 10 minutos de antecedência.\n\n` +
+        `Qualquer dúvida, estamos à disposição! 💕`
+      );
+      
+      const whatsappNumber = clientPhone.replace(/\D/g, '');
+      const whatsappUrl = `https://wa.me/55${whatsappNumber}?text=${whatsappMessage}`;
+      
+      // Open WhatsApp in a new window
+      window.open(whatsappUrl, '_blank');
+      
+      toast.success("Agendamento confirmado! Você receberá um email e uma mensagem no WhatsApp.");
+      
+      // Reset form
+      setCurrentStep(1);
+      setSelectedService(null);
+      setSelectedDate(undefined);
+      setSelectedTime("");
+      setClientName("");
+      setClientEmail("");
+      setClientPhone("");
+    } catch (error) {
+      console.error("Error confirming booking:", error);
+      toast.error("Erro ao confirmar agendamento. Tente novamente.");
+    }
   };
 
   const stepVariants = {
