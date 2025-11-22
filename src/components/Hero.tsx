@@ -60,14 +60,20 @@ const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-4">
+        {/* Radial gradient overlay behind text for better readability */}
+        <div className="absolute inset-0 bg-gradient-radial from-black/40 via-transparent to-transparent" />
+        
         <motion.div 
-          className="text-center max-w-4xl"
+          className="text-center max-w-4xl relative z-10"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h1 
-            className="font-signature text-6xl md:text-8xl lg:text-9xl mb-6 text-gold"
+            className="font-signature text-6xl md:text-8xl lg:text-9xl mb-6 text-gold-gradient font-bold"
+            style={{
+              fontWeight: 700,
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -76,7 +82,7 @@ const Hero = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl lg:text-3xl mb-8 text-warm-white font-light tracking-wide"
+            className="text-xl md:text-2xl lg:text-3xl mb-8 text-white font-light tracking-wide text-shadow-strong"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -129,6 +135,9 @@ const Hero = () => {
         @keyframes scroll-right {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
+        }
+        .bg-gradient-radial {
+          background: radial-gradient(circle at center, var(--tw-gradient-stops));
         }
       `}</style>
     </section>
