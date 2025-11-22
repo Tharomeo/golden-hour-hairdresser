@@ -117,7 +117,10 @@ const BookingSection = () => {
       
       const formattedDate = format(selectedDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
       
-      const { error: emailError } = await supabase.functions.invoke('send-booking-confirmation', {
+      console.log("Calling send-booking-confirmation function...");
+      console.log("Data:", { clientName, clientEmail, clientPhone, serviceName: selectedService.name });
+      
+      const { data, error: emailError } = await supabase.functions.invoke('send-booking-confirmation', {
         body: {
           clientName,
           clientEmail,
@@ -129,10 +132,15 @@ const BookingSection = () => {
         }
       });
 
+      console.log("Function response:", { data, error: emailError });
+
       if (emailError) {
         console.error("Error sending email:", emailError);
         toast.error("Não foi possível enviar o email de confirmação. Entre em contato conosco.");
+        return;
       }
+      
+      console.log("Email sent successfully!");
 
       // Send WhatsApp message
       const whatsappMessage = encodeURIComponent(
