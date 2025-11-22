@@ -31,7 +31,7 @@ const AboutSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-6 text-gold">
-            Por que escolher o Atelier Lumière?
+            Por que escolher o Golden Hour?
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Não oferecemos apenas um serviço de cabelo - criamos uma experiência transformadora. 

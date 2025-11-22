@@ -29,12 +29,12 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h1 
-            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-6 text-gold"
+            className="font-signature text-6xl md:text-8xl lg:text-9xl mb-6 text-gold"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Atelier Lumière
+            Golden Hour
           </motion.h1>
           
           <motion.p 
