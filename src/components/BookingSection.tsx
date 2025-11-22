@@ -29,7 +29,6 @@ const BookingSection = () => {
   const [clientName, setClientName] = useState("");
   const [clientEmail, setClientEmail] = useState("");
   const [clientPhone, setClientPhone] = useState("");
-  const [webhookUrl, setWebhookUrl] = useState("");
 
   const services = [
     { id: "corte-finalizacao", name: "Corte & Finalização", duration: 60 },
@@ -48,37 +47,10 @@ const BookingSection = () => {
   };
 
   const fetchAvailableSlots = async (date: Date, serviceId: string) => {
-    if (!webhookUrl) {
-      toast.error("Por favor, configure o webhook URL do n8n primeiro");
-      return;
-    }
-
     setIsLoadingSlots(true);
-    const service = services.find(s => s.id === serviceId);
     
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          action: "get_available_slots",
-          data_selecionada: date.toISOString().split('T')[0],
-          servico_id: serviceId,
-          duracao_minutos: service?.duration || 60,
-        }),
-      });
-
-      if (!response.ok) throw new Error("Erro ao buscar horários");
-
-      const data = await response.json();
-      setAvailableSlots(data.slots || []);
-      
-    } catch (error) {
-      console.error("Erro:", error);
-      toast.error("Erro ao carregar horários disponíveis");
-      // Mock data for demonstration
+    // Mock data for demonstration
+    setTimeout(() => {
       setAvailableSlots([
         { time: "09:00", available: true },
         { time: "10:00", available: true },
@@ -86,10 +58,10 @@ const BookingSection = () => {
         { time: "14:00", available: true },
         { time: "15:00", available: true },
         { time: "16:00", available: true },
+        { time: "17:00", available: true },
       ]);
-    } finally {
       setIsLoadingSlots(false);
-    }
+    }, 500);
   };
 
   const handleDateSelect = (date: Date | undefined) => {
@@ -106,34 +78,10 @@ const BookingSection = () => {
       return;
     }
 
-    if (!webhookUrl) {
-      toast.error("Por favor, configure o webhook URL do n8n primeiro");
-      return;
-    }
-
     setIsSubmitting(true);
 
-    try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          action: "confirm_booking",
-          servico_id: selectedService,
-          data: selectedDate.toISOString().split('T')[0],
-          horario: selectedTime,
-          cliente: {
-            nome: clientName,
-            email: clientEmail,
-            telefone: clientPhone,
-          },
-        }),
-      });
-
-      if (!response.ok) throw new Error("Erro ao confirmar agendamento");
-
+    // Simulate booking confirmation
+    setTimeout(() => {
       toast.success("Agendamento confirmado! Você receberá um email de confirmação.");
       
       // Reset form
@@ -144,13 +92,8 @@ const BookingSection = () => {
       setClientEmail("");
       setClientPhone("");
       setAvailableSlots([]);
-      
-    } catch (error) {
-      console.error("Erro:", error);
-      toast.error("Erro ao confirmar agendamento. Tente novamente.");
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -178,21 +121,6 @@ const BookingSection = () => {
           viewport={{ once: true }}
           className="bg-card p-8 md:p-12 rounded-3xl shadow-luxury border border-border/50"
         >
-          {/* Webhook Configuration (For Development) */}
-          <div className="mb-8 p-4 bg-muted/50 rounded-lg">
-            <Label htmlFor="webhook" className="text-sm font-medium mb-2 block">
-              N8N Webhook URL (Configure seu endpoint)
-            </Label>
-            <Input
-              id="webhook"
-              type="url"
-              placeholder="https://seu-n8n.app/webhook/booking"
-              value={webhookUrl}
-              onChange={(e) => setWebhookUrl(e.target.value)}
-              className="font-mono text-sm"
-            />
-          </div>
-
           {/* Step 1: Service Selection */}
           <div className="mb-8">
             <Label htmlFor="service" className="text-lg font-semibold mb-3 block">
