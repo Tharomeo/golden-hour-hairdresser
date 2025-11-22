@@ -59,21 +59,23 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full items-center justify-center px-4 py-8">
+      <div className="relative z-10 flex h-full items-center justify-center px-6 py-12" style={{ overflow: "visible" }}>
         {/* Radial gradient overlay behind text for better readability */}
         <div className="absolute inset-0 bg-gradient-radial from-black/40 via-transparent to-transparent" />
         
         <motion.div 
-          className="text-center max-w-4xl relative z-10 px-4"
+          className="text-center max-w-4xl relative z-10 px-8 py-8"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ overflow: "visible" }}
         >
           <motion.h1 
-            className="font-signature text-6xl md:text-8xl lg:text-9xl mb-6 text-gold-gradient font-bold px-4"
+            className="font-signature text-6xl md:text-8xl lg:text-9xl mb-10 text-gold-gradient font-bold px-8 py-4 leading-tight"
             style={{
               fontWeight: 700,
-              overflow: "visible",
+              lineHeight: "1.2",
+              display: "inline-block",
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
