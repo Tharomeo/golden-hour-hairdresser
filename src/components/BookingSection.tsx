@@ -246,7 +246,7 @@ const BookingSection = () => {
                             className={`relative p-6 rounded-2xl border-2 transition-all text-left ${
                               isSelected
                                 ? "border-gold bg-gold/5 shadow-luxury"
-                                : "border-border hover:border-gold/50 bg-card"
+                                : "border-border bg-card hover:border-gold/50"
                             }`}
                           >
                             {isSelected && (
@@ -277,7 +277,7 @@ const BookingSection = () => {
                         onClick={() => setShowCustomizeCard(true)}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="relative p-6 rounded-2xl border-2 border-dashed border-gold/50 hover:border-gold hover:bg-gold/5 transition-all text-left"
+                        className="relative p-6 rounded-2xl border-2 border-dashed border-gold/50 bg-card hover:border-gold hover:bg-gold/5 transition-all text-left"
                       >
                         <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-gold/10">
                           <Wand2 className="w-6 h-6 text-gold" />
