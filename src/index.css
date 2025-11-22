@@ -164,6 +164,9 @@ All colors MUST be HSL.
     background-clip: text;
     filter: drop-shadow(0 4px 8px rgba(191, 149, 63, 0.5)) 
             drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    -webkit-text-stroke: 2px rgba(0, 0, 0, 0.8);
+    text-stroke: 2px rgba(0, 0, 0, 0.8);
+    paint-order: stroke fill;
   }
   
   .text-shadow-strong {
