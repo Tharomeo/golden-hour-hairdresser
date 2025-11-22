@@ -238,15 +238,13 @@ const BookingSection = () => {
                         const isSelected = selectedService?.id === service.id;
                         
                         return (
-                          <motion.button
+                          <button
                             key={service.id}
                             onClick={() => setSelectedService(service)}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className={`relative p-6 rounded-2xl border-2 transition-all text-left ${
+                            className={`relative p-6 rounded-2xl border-2 transition-all duration-300 text-left hover:scale-[1.02] active:scale-[0.98] ${
                               isSelected
                                 ? "border-gold bg-gold/5 shadow-luxury"
-                                : "border-border bg-card hover:border-gold/50"
+                                : "border-border bg-card hover:border-gold/50 hover:shadow-elegant"
                             }`}
                           >
                             {isSelected && (
@@ -268,16 +266,14 @@ const BookingSection = () => {
                               <span className="text-gold font-bold text-lg">{service.price}</span>
                               <span className="text-muted-foreground">{service.duration} min</span>
                             </div>
-                          </motion.button>
+                          </button>
                         );
                       })}
                       
                       {/* Customize Option */}
-                      <motion.button
+                      <button
                         onClick={() => setShowCustomizeCard(true)}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        className="relative p-6 rounded-2xl border-2 border-dashed border-gold/50 bg-card hover:border-gold hover:bg-gold/5 transition-all text-left"
+                        className="relative p-6 rounded-2xl border-2 border-dashed border-gold/50 bg-card transition-all duration-300 text-left hover:scale-[1.02] active:scale-[0.98] hover:border-gold hover:bg-gold/5 hover:shadow-elegant"
                       >
                         <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-gold/10">
                           <Wand2 className="w-6 h-6 text-gold" />
@@ -291,7 +287,7 @@ const BookingSection = () => {
                         <div className="text-gold text-sm font-medium">
                           Ver informações →
                         </div>
-                      </motion.button>
+                      </button>
                     </div>
 
                     {/* Customize Contact Card Modal */}
