@@ -30,7 +30,7 @@ const Hero = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden">
       {/* Animated Image Grid Background */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         {imageRows.map((row, rowIndex) => (
           <div
             key={rowIndex}
@@ -59,20 +59,21 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex h-full items-center justify-center px-4">
+      <div className="relative z-10 flex h-full items-center justify-center px-4 py-8">
         {/* Radial gradient overlay behind text for better readability */}
         <div className="absolute inset-0 bg-gradient-radial from-black/40 via-transparent to-transparent" />
         
         <motion.div 
-          className="text-center max-w-4xl relative z-10"
+          className="text-center max-w-4xl relative z-10 px-4"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <motion.h1 
-            className="font-signature text-6xl md:text-8xl lg:text-9xl mb-6 text-gold-gradient font-bold"
+            className="font-signature text-6xl md:text-8xl lg:text-9xl mb-6 text-gold-gradient font-bold px-4"
             style={{
               fontWeight: 700,
+              overflow: "visible",
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
