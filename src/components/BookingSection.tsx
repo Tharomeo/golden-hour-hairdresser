@@ -241,7 +241,7 @@ const BookingSection = () => {
                           <button
                             key={service.id}
                             onClick={() => setSelectedService(service)}
-                            className={`relative p-6 rounded-2xl border-2 transition-all duration-300 text-left hover:scale-[1.02] active:scale-[0.98] ${
+                            className={`relative p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
                               isSelected
                                 ? "border-gold bg-gold/5 shadow-luxury"
                                 : "border-border bg-card hover:border-gold/50 hover:shadow-elegant"
@@ -273,7 +273,7 @@ const BookingSection = () => {
                       {/* Customize Option */}
                       <button
                         onClick={() => setShowCustomizeCard(true)}
-                        className="relative p-6 rounded-2xl border-2 border-dashed border-gold/50 bg-card transition-all duration-300 text-left hover:scale-[1.02] active:scale-[0.98] hover:border-gold hover:bg-gold/5 hover:shadow-elegant"
+                        className="relative p-6 rounded-2xl border-2 border-dashed border-gold/50 bg-card transition-all duration-300 text-left hover:border-gold hover:bg-gold/5 hover:shadow-elegant"
                       >
                         <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-gold/10">
                           <Wand2 className="w-6 h-6 text-gold" />
