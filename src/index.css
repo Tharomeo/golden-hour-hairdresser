@@ -156,4 +156,20 @@ All colors MUST be HSL.
   .transition-smooth {
     transition: var(--transition-smooth);
   }
+  
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 50%, #B38728 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 4px 8px rgba(191, 149, 63, 0.5)) 
+            drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+  
+  .text-shadow-strong {
+    text-shadow: 
+      0 2px 10px rgba(0, 0, 0, 0.8),
+      0 4px 20px rgba(0, 0, 0, 0.6),
+      0 1px 3px rgba(0, 0, 0, 0.9);
+  }
 }
