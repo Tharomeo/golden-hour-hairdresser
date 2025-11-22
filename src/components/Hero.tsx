@@ -1,6 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-salon.jpg";
+import { useEffect, useState } from "react";
+
+// Import images
+import hair1 from "@/assets/hair-1.jpg";
+import salon1 from "@/assets/salon-1.jpg";
+import hair2 from "@/assets/hair-2.jpg";
+import tools1 from "@/assets/tools-1.jpg";
+import hair3 from "@/assets/hair-3.jpg";
+import hair4 from "@/assets/hair-4.jpg";
+import products1 from "@/assets/products-1.jpg";
+import hair5 from "@/assets/hair-5.jpg";
 
 const Hero = () => {
   const scrollToBooking = () => {
@@ -8,16 +18,44 @@ const Hero = () => {
     bookingSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const images = [hair1, salon1, hair2, tools1, hair3, hair4, products1, hair5];
+  
+  // Create multiple rows for continuous scroll
+  const [imageRows, setImageRows] = useState([
+    [...images, ...images],
+    [...images, ...images].reverse(),
+    [...images, ...images],
+  ]);
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
-      {/* Hero Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ 
-          backgroundImage: `url(${heroImage})`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+      {/* Animated Image Grid Background */}
+      <div className="absolute inset-0">
+        {imageRows.map((row, rowIndex) => (
+          <div
+            key={rowIndex}
+            className="flex gap-4 mb-4"
+            style={{
+              animation: `scroll-${rowIndex % 2 === 0 ? 'left' : 'right'} ${40 + rowIndex * 5}s linear infinite`,
+            }}
+          >
+            {row.map((img, imgIndex) => (
+              <div
+                key={`${rowIndex}-${imgIndex}`}
+                className="flex-shrink-0 w-64 h-64 relative overflow-hidden rounded-lg"
+              >
+                <img
+                  src={img}
+                  alt="Golden Hour Salon"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        ))}
+        
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/80" />
       </div>
 
       {/* Content */}
@@ -64,7 +102,7 @@ const Hero = () => {
 
       {/* Scroll Indicator */}
       <motion.div 
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold z-10"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
       >
@@ -82,6 +120,17 @@ const Hero = () => {
           />
         </svg>
       </motion.div>
+
+      <style>{`
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes scroll-right {
+          0% { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+      `}</style>
     </section>
   );
 };
