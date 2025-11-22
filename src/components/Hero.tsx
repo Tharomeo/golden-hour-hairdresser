@@ -11,6 +11,7 @@ import hair3 from "@/assets/hair-3.jpg";
 import hair4 from "@/assets/hair-4.jpg";
 import products1 from "@/assets/products-1.jpg";
 import hair5 from "@/assets/hair-5.jpg";
+import goldenHourText from "@/assets/golden-hour-text.png";
 
 const Hero = () => {
   const scrollToBooking = () => {
@@ -70,19 +71,21 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           style={{ overflow: "visible" }}
         >
-          <motion.h1 
-            className="font-signature text-6xl md:text-8xl lg:text-9xl mb-10 text-gold-gradient font-bold px-8 py-4 leading-tight"
-            style={{
-              fontWeight: 700,
-              lineHeight: "1.2",
-              display: "inline-block",
-            }}
+          <motion.div
+            className="mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Golden Hour
-          </motion.h1>
+            <img 
+              src={goldenHourText} 
+              alt="Golden Hour"
+              className="w-full max-w-3xl mx-auto"
+              style={{
+                filter: "drop-shadow(0 4px 8px rgba(191, 149, 63, 0.5)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3))"
+              }}
+            />
+          </motion.div>
           
           <motion.p 
             className="text-xl md:text-2xl lg:text-3xl mb-8 text-white font-light tracking-wide text-shadow-strong"
