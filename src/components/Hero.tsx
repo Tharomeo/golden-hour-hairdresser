@@ -55,13 +55,13 @@ const Hero = () => {
         ))}
         
         {/* Subtle overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/20 to-background/30" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-6 py-12" style={{ overflow: "visible" }}>
         {/* Radial gradient overlay behind text for better readability */}
-        <div className="absolute inset-0 bg-gradient-radial from-black/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-radial from-background/20 via-transparent to-transparent" />
         
         <motion.div 
           className="text-center max-w-4xl relative z-10 px-8 py-8"
