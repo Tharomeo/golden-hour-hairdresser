@@ -315,13 +315,16 @@ const BookingSection = () => {
                               </div>
                             )}
                             
-                            <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-3 ${
-                              isSelected ? "bg-gold" : "bg-secondary/50"
-                            }`}>
-                              <Icon className={`w-5 h-5 ${isSelected ? "text-foreground" : "text-gold"}`} />
+                            <div className="flex items-center gap-3 mb-3">
+                              <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
+                                isSelected ? "bg-gold" : "bg-secondary/50"
+                              }`}>
+                                <Icon className={`w-5 h-5 ${isSelected ? "text-foreground" : "text-gold"}`} />
+                              </div>
+                              <h4 className="font-semibold text-base">{service.name}</h4>
                             </div>
                             
-                            <h4 className="font-semibold text-base mb-3">{service.name}</h4>
+                            <p className="text-sm text-muted-foreground mb-3">{service.description}</p>
                             
                             <div className="flex items-center justify-between text-sm">
                               <span className="text-gold font-bold">{service.price}</span>
@@ -336,11 +339,14 @@ const BookingSection = () => {
                         onClick={() => setShowCustomizeCard(true)}
                         className="relative p-4 rounded-xl border-2 border-dashed border-gold/50 bg-card transition-all duration-300 text-left hover:border-gold hover:bg-gold/5 hover:shadow-sm"
                       >
-                        <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-gold/10">
-                          <Wand2 className="w-5 h-5 text-gold" />
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 bg-gold/10">
+                            <Wand2 className="w-5 h-5 text-gold" />
+                          </div>
+                          <h4 className="font-semibold text-base">Personalizar</h4>
                         </div>
                         
-                        <h4 className="font-semibold text-base mb-3">Personalizar</h4>
+                        <p className="text-sm text-muted-foreground mb-3">Precisa de algo especial? Entre em contato</p>
                         
                         <div className="text-gold text-xs font-medium">
                           Ver informações →
