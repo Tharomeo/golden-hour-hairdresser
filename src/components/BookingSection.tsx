@@ -303,30 +303,29 @@ const BookingSection = () => {
                           <button
                             key={service.id}
                             onClick={() => setSelectedService(service)}
-                            className={`relative p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
+                            className={`relative p-4 rounded-xl border-2 transition-all duration-300 text-left ${
                               isSelected
-                                ? "border-gold bg-gold/5 shadow-luxury"
-                                : "border-border bg-card hover:border-gold/50 hover:shadow-elegant"
+                                ? "border-gold bg-gold/5 shadow-elegant"
+                                : "border-border/50 bg-card hover:border-gold/50 hover:shadow-sm"
                             }`}
                           >
                             {isSelected && (
-                              <div className="absolute top-4 right-4 w-6 h-6 rounded-full bg-gold flex items-center justify-center">
-                                <Check className="w-4 h-4 text-foreground" />
+                              <div className="absolute top-3 right-3 w-5 h-5 rounded-full bg-gold flex items-center justify-center">
+                                <Check className="w-3 h-3 text-foreground" />
                               </div>
                             )}
                             
-                            <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 ${
-                              isSelected ? "bg-gold" : "bg-secondary"
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-3 ${
+                              isSelected ? "bg-gold" : "bg-secondary/50"
                             }`}>
-                              <Icon className={`w-6 h-6 ${isSelected ? "text-foreground" : "text-gold"}`} />
+                              <Icon className={`w-5 h-5 ${isSelected ? "text-foreground" : "text-gold"}`} />
                             </div>
                             
-                            <h4 className="font-semibold text-lg mb-2">{service.name}</h4>
-                            <p className="text-sm text-muted-foreground mb-3">{service.description}</p>
+                            <h4 className="font-semibold text-base mb-3">{service.name}</h4>
                             
                             <div className="flex items-center justify-between text-sm">
-                              <span className="text-gold font-bold text-lg">{service.price}</span>
-                              <span className="text-muted-foreground">{service.duration} min</span>
+                              <span className="text-gold font-bold">{service.price}</span>
+                              <span className="text-muted-foreground text-xs">{service.duration} min</span>
                             </div>
                           </button>
                         );
@@ -335,18 +334,15 @@ const BookingSection = () => {
                       {/* Customize Option */}
                       <button
                         onClick={() => setShowCustomizeCard(true)}
-                        className="relative p-6 rounded-2xl border-2 border-dashed border-gold/50 bg-card transition-all duration-300 text-left hover:border-gold hover:bg-gold/5 hover:shadow-elegant"
+                        className="relative p-4 rounded-xl border-2 border-dashed border-gold/50 bg-card transition-all duration-300 text-left hover:border-gold hover:bg-gold/5 hover:shadow-sm"
                       >
-                        <div className="w-12 h-12 rounded-full flex items-center justify-center mb-4 bg-gold/10">
-                          <Wand2 className="w-6 h-6 text-gold" />
+                        <div className="w-10 h-10 rounded-full flex items-center justify-center mb-3 bg-gold/10">
+                          <Wand2 className="w-5 h-5 text-gold" />
                         </div>
                         
-                        <h4 className="font-semibold text-lg mb-2">Personalizar</h4>
-                        <p className="text-sm text-muted-foreground mb-3">
-                          Precisa de algo especial? Entre em contato
-                        </p>
+                        <h4 className="font-semibold text-base mb-3">Personalizar</h4>
                         
-                        <div className="text-gold text-sm font-medium">
+                        <div className="text-gold text-xs font-medium">
                           Ver informações →
                         </div>
                       </button>
