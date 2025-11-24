@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 
 // Import images
 import hair1 from "@/assets/hair-1.jpg";
-import salon1 from "@/assets/salon-1.jpg";
+import nails1 from "@/assets/nails-1.jpg";
 import hair2 from "@/assets/hair-2.jpg";
-import tools1 from "@/assets/tools-1.jpg";
+import nails2 from "@/assets/nails-2.jpg";
 import hair3 from "@/assets/hair-3.jpg";
 import hair4 from "@/assets/hair-4.jpg";
-import products1 from "@/assets/products-1.jpg";
+import nails3 from "@/assets/nails-3.jpg";
 import hair5 from "@/assets/hair-5.jpg";
 
 const Hero = () => {
@@ -18,7 +18,7 @@ const Hero = () => {
     bookingSection?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const images = [hair1, salon1, hair2, tools1, hair3, hair4, products1, hair5];
+  const images = [hair1, nails1, hair2, nails2, hair3, hair4, nails3, hair5];
   
   // Create multiple rows for continuous scroll
   const [imageRows, setImageRows] = useState([

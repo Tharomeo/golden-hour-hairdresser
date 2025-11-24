@@ -68,6 +68,38 @@ const BookingSection = () => {
       price: "R$ 200",
       description: "Tratamento profundo de hidratação"
     },
+    {
+      id: "manicure-completa",
+      name: "Manicure Completa",
+      icon: Sparkles,
+      duration: 60,
+      price: "R$ 80",
+      description: "Manicure com esmaltação e cuidados completos"
+    },
+    {
+      id: "pedicure-completa",
+      name: "Pedicure Completa",
+      icon: Heart,
+      duration: 60,
+      price: "R$ 90",
+      description: "Pedicure com esfoliação e hidratação"
+    },
+    {
+      id: "unhas-decoradas",
+      name: "Unhas Decoradas",
+      icon: Crown,
+      duration: 90,
+      price: "R$ 150",
+      description: "Nail art personalizada com decoração premium"
+    },
+    {
+      id: "manicure-pedicure",
+      name: "Manicure + Pedicure",
+      icon: Wand2,
+      duration: 120,
+      price: "R$ 160",
+      description: "Combo completo de mãos e pés"
+    },
   ];
 
   const timeSlots: TimeSlot[] = [
