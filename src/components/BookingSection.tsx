@@ -373,7 +373,7 @@ const BookingSection = () => {
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.9, y: 20 }}
                             transition={{ type: "spring", duration: 0.5 }}
-                            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] md:w-full md:max-w-lg bg-card rounded-3xl shadow-luxury border-2 border-gold/30 z-50 overflow-hidden"
+                            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] md:w-full md:max-w-lg max-h-[90vh] overflow-y-auto bg-card rounded-3xl shadow-luxury border-2 border-gold/30 z-50"
                           >
                             {/* Close Button */}
                             <button
