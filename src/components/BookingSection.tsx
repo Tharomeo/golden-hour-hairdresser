@@ -358,97 +358,98 @@ const BookingSection = () => {
                     <AnimatePresence>
                       {showCustomizeCard && (
                         <>
-                          {/* Backdrop */}
+                          {/* Backdrop with flex centering */}
                           <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             onClick={() => setShowCustomizeCard(false)}
-                            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
-                          />
-                          
-                          {/* Modal Card */}
-                          <motion.div
-                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                            transition={{ type: "spring", duration: 0.5 }}
-                            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[calc(100%-2rem)] md:w-full md:max-w-lg max-h-[90vh] overflow-y-auto bg-card rounded-3xl shadow-luxury border-2 border-gold/30 z-50"
+                            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                           >
-                            {/* Close Button */}
-                            <button
-                              onClick={() => setShowCustomizeCard(false)}
-                              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 hover:bg-background flex items-center justify-center transition-colors z-10"
+                            {/* Modal Card */}
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0.9 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0.9 }}
+                              transition={{ type: "spring", duration: 0.5 }}
+                              onClick={(e) => e.stopPropagation()}
+                              className="w-full max-w-lg max-h-[90vh] overflow-y-auto bg-card rounded-3xl shadow-luxury border-2 border-gold/30 relative"
                             >
-                              <X className="w-5 h-5" />
-                            </button>
+                              {/* Close Button */}
+                              <button
+                                onClick={() => setShowCustomizeCard(false)}
+                                className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 hover:bg-background flex items-center justify-center transition-colors z-10"
+                              >
+                                <X className="w-5 h-5" />
+                              </button>
 
-                            {/* Header with gradient */}
-                            <div className="bg-gradient-to-br from-gold via-gold-light to-gold-dark p-8 text-foreground">
-                              <div className="flex items-center gap-3 mb-4">
-                                <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                                  <Wand2 className="w-7 h-7" />
+                              {/* Header with gradient */}
+                              <div className="bg-gradient-to-br from-gold via-gold-light to-gold-dark p-8 text-foreground">
+                                <div className="flex items-center gap-3 mb-4">
+                                  <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                    <Wand2 className="w-7 h-7" />
+                                  </div>
+                                  <div>
+                                    <h3 className="text-2xl font-display font-bold">Personalizar Serviço</h3>
+                                    <p className="text-sm opacity-90">Estamos aqui para você!</p>
+                                  </div>
                                 </div>
-                                <div>
-                                  <h3 className="text-2xl font-display font-bold">Personalizar Serviço</h3>
-                                  <p className="text-sm opacity-90">Estamos aqui para você!</p>
-                                </div>
-                              </div>
-                              
-                              <p className="text-base leading-relaxed">
-                                Bem-vindo! Queremos criar uma experiência única para você. Entre em contato conosco para personalizar seu atendimento.
-                              </p>
-                            </div>
-
-                            {/* Contact Information */}
-                            <div className="p-8 space-y-6">
-                              <div className="flex items-start gap-4 group">
-                                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                                  <Phone className="w-6 h-6 text-gold" />
-                                </div>
-                                <div className="flex-1">
-                                  <h4 className="font-semibold mb-1">Telefone</h4>
-                                  <a href="tel:+5511999999999" className="text-muted-foreground hover:text-gold transition-colors">
-                                    (11) 99999-9999
-                                  </a>
-                                </div>
+                                
+                                <p className="text-base leading-relaxed">
+                                  Bem-vindo! Queremos criar uma experiência única para você. Entre em contato conosco para personalizar seu atendimento.
+                                </p>
                               </div>
 
-                              <div className="flex items-start gap-4 group">
-                                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                                  <Mail className="w-6 h-6 text-gold" />
+                              {/* Contact Information */}
+                              <div className="p-8 space-y-6">
+                                <div className="flex items-start gap-4 group">
+                                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                                    <Phone className="w-6 h-6 text-gold" />
+                                  </div>
+                                  <div className="flex-1">
+                                    <h4 className="font-semibold mb-1">Telefone</h4>
+                                    <a href="tel:+5511999999999" className="text-muted-foreground hover:text-gold transition-colors">
+                                      (11) 99999-9999
+                                    </a>
+                                  </div>
                                 </div>
-                                <div className="flex-1">
-                                  <h4 className="font-semibold mb-1">E-mail</h4>
-                                  <a href="mailto:contato@salao.com" className="text-muted-foreground hover:text-gold transition-colors">
-                                    contato@salao.com
-                                  </a>
-                                </div>
-                              </div>
 
-                              <div className="flex items-start gap-4 group">
-                                <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
-                                  <MapPin className="w-6 h-6 text-gold" />
+                                <div className="flex items-start gap-4 group">
+                                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                                    <Mail className="w-6 h-6 text-gold" />
+                                  </div>
+                                  <div className="flex-1">
+                                    <h4 className="font-semibold mb-1">E-mail</h4>
+                                    <a href="mailto:contato@salao.com" className="text-muted-foreground hover:text-gold transition-colors">
+                                      contato@salao.com
+                                    </a>
+                                  </div>
                                 </div>
-                                <div className="flex-1">
-                                  <h4 className="font-semibold mb-1">Endereço</h4>
-                                  <p className="text-muted-foreground">
-                                    Rua das Flores, 123<br />
-                                    Jardins - São Paulo, SP<br />
-                                    CEP: 01234-567
-                                  </p>
-                                </div>
-                              </div>
 
-                              <div className="pt-4">
-                                <Button
-                                  onClick={() => setShowCustomizeCard(false)}
-                                  className="w-full h-12 bg-gold hover:bg-gold-dark text-foreground font-semibold"
-                                >
-                                  Entendi, obrigado!
-                                </Button>
+                                <div className="flex items-start gap-4 group">
+                                  <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-colors">
+                                    <MapPin className="w-6 h-6 text-gold" />
+                                  </div>
+                                  <div className="flex-1">
+                                    <h4 className="font-semibold mb-1">Endereço</h4>
+                                    <p className="text-muted-foreground">
+                                      Rua das Flores, 123<br />
+                                      Jardins - São Paulo, SP<br />
+                                      CEP: 01234-567
+                                    </p>
+                                  </div>
+                                </div>
+
+                                <div className="pt-4">
+                                  <Button
+                                    onClick={() => setShowCustomizeCard(false)}
+                                    className="w-full h-12 bg-gold hover:bg-gold-dark text-foreground font-semibold"
+                                  >
+                                    Entendi, obrigado!
+                                  </Button>
+                                </div>
                               </div>
-                            </div>
+                            </motion.div>
                           </motion.div>
                         </>
                       )}
