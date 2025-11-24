@@ -85,12 +85,12 @@ const BookingSection = () => {
       description: "Pedicure com esfoliação e hidratação"
     },
     {
-      id: "unhas-decoradas",
-      name: "Unhas Decoradas",
+      id: "unhas-gel",
+      name: "Unhas em Gel",
       icon: Crown,
-      duration: 90,
+      duration: 120,
       price: "R$ 150",
-      description: "Nail art personalizada com decoração premium"
+      description: "Aplicação de unhas em gel com acabamento profissional"
     },
     {
       id: "manicure-pedicure",
