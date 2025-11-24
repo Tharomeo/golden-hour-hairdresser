@@ -112,36 +112,8 @@ const BookingSection = () => {
     if (!selectedService || !selectedDate || !selectedTime) return;
     
     try {
-      // Send email confirmation
-      const { supabase } = await import("@/integrations/supabase/client");
-      
       const formattedDate = format(selectedDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
       
-      console.log("Calling send-booking-confirmation function...");
-      console.log("Data:", { clientName, clientEmail, clientPhone, serviceName: selectedService.name });
-      
-      const { data, error: emailError } = await supabase.functions.invoke('send-booking-confirmation', {
-        body: {
-          clientName,
-          clientEmail,
-          clientPhone,
-          serviceName: selectedService.name,
-          servicePrice: selectedService.price,
-          date: formattedDate,
-          time: selectedTime,
-        }
-      });
-
-      console.log("Function response:", { data, error: emailError });
-
-      if (emailError) {
-        console.error("Error sending email:", emailError);
-        toast.error("Não foi possível enviar o email de confirmação. Entre em contato conosco.");
-        return;
-      }
-      
-      console.log("Email sent successfully!");
-
       // Send WhatsApp message
       const whatsappMessage = encodeURIComponent(
         `✨ *Confirmação de Agendamento* ✨\n\n` +
@@ -163,7 +135,7 @@ const BookingSection = () => {
       // Open WhatsApp in a new window
       window.open(whatsappUrl, '_blank');
       
-      toast.success("Agendamento confirmado! Você receberá um email e uma mensagem no WhatsApp.");
+      toast.success("Agendamento confirmado! Você receberá uma mensagem no WhatsApp.");
       
       // Reset form
       setCurrentStep(1);
