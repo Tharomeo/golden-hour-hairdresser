@@ -42,7 +42,6 @@ const Footer = () => {
               <p className="text-sm text-background/60">(Almoço: 11:30 - 13h)</p>
               <p className="mt-2">Sábado: 9h às 18h</p>
               <p className="text-sm text-background/60">(Almoço: 11:30 - 13h)</p>
-              <p className="mt-2">Domingo: Fechado</p>
             </div>
             <div className="flex gap-4">
               <a 
