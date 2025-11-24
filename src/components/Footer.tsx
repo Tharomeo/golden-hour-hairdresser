@@ -1,4 +1,4 @@
-import { Instagram, Facebook, MapPin, Phone, Mail } from "lucide-react";
+import { Instagram, Facebook, MapPin, Phone, Mail, Pin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -59,6 +59,14 @@ const Footer = () => {
                 className="hover:text-gold transition-colors"
               >
                 <Facebook className="w-6 h-6" />
+              </a>
+              <a 
+                href="https://pinterest.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-gold transition-colors"
+              >
+                <Pin className="w-6 h-6" />
               </a>
             </div>
           </div>
