@@ -408,7 +408,7 @@ const BookingSection = () => {
                                   </div>
                                   <div className="flex-1">
                                     <h4 className="font-semibold mb-1">Telefone</h4>
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex items-center justify-between gap-4">
                                       <a href="tel:+5511999999999" className="text-muted-foreground hover:text-gold transition-colors">
                                         (11) 99999-9999
                                       </a>
@@ -431,7 +431,7 @@ const BookingSection = () => {
                                   </div>
                                   <div className="flex-1">
                                     <h4 className="font-semibold mb-1">E-mail</h4>
-                                    <div className="flex items-center gap-2">
+                                    <div className="flex items-center justify-between gap-4">
                                       <a href="mailto:contato@salao.com" className="text-muted-foreground hover:text-gold transition-colors">
                                         contato@salao.com
                                       </a>
