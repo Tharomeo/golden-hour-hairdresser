@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Calendar } from "@/components/ui/calendar";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check, Scissors, Sparkles, Heart, Crown, Calendar as CalendarIcon, Clock, ChevronLeft, ChevronRight, Wand2, Phone, Mail, MapPin, X } from "lucide-react";
+import { Check, Scissors, Sparkles, Heart, Crown, Calendar as CalendarIcon, Clock, ChevronLeft, ChevronRight, Wand2, Phone, Mail, MapPin, X, MessageCircle } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 
@@ -408,9 +408,20 @@ const BookingSection = () => {
                                   </div>
                                   <div className="flex-1">
                                     <h4 className="font-semibold mb-1">Telefone</h4>
-                                    <a href="tel:+5511999999999" className="text-muted-foreground hover:text-gold transition-colors">
-                                      (11) 99999-9999
-                                    </a>
+                                    <div className="flex items-center gap-2">
+                                      <a href="tel:+5511999999999" className="text-muted-foreground hover:text-gold transition-colors">
+                                        (11) 99999-9999
+                                      </a>
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="h-8 gap-2"
+                                        onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
+                                      >
+                                        <MessageCircle className="w-4 h-4" />
+                                        WhatsApp
+                                      </Button>
+                                    </div>
                                   </div>
                                 </div>
 
@@ -420,9 +431,20 @@ const BookingSection = () => {
                                   </div>
                                   <div className="flex-1">
                                     <h4 className="font-semibold mb-1">E-mail</h4>
-                                    <a href="mailto:contato@salao.com" className="text-muted-foreground hover:text-gold transition-colors">
-                                      contato@salao.com
-                                    </a>
+                                    <div className="flex items-center gap-2">
+                                      <a href="mailto:contato@salao.com" className="text-muted-foreground hover:text-gold transition-colors">
+                                        contato@salao.com
+                                      </a>
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        className="h-8 gap-2"
+                                        onClick={() => window.location.href = 'mailto:contato@salao.com'}
+                                      >
+                                        <Mail className="w-4 h-4" />
+                                        Enviar
+                                      </Button>
+                                    </div>
                                   </div>
                                 </div>
 
